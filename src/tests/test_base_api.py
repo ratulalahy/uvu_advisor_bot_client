@@ -10,7 +10,7 @@ def base_api():
 def test_base_api_initialization():
     """Test BaseAPI initialization with default base URL."""
     api = BaseAPI()
-    assert api.base_url == "https://4158-161-28-242-155.ngrok-free.app/v1"
+    assert api.base_url == "https://0e80-161-28-242-150.ngrok-free.app/v1"
 
 def test_base_api_get_success(base_api):
     """Test successful GET request."""

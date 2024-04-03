@@ -9,7 +9,7 @@ def chat_api():
 
 def test_chat_api_initialization(chat_api):
     """Test ChatCompletionAPI initialization with default settings."""
-    assert chat_api.base_url == "https://4158-161-28-242-155.ngrok-free.app/v1"
+    assert chat_api.base_url == "https://0e80-161-28-242-150.ngrok-free.app/v1"
     assert chat_api.conversation_history == []
 
 def test_post_chat_completions_single_message(chat_api):

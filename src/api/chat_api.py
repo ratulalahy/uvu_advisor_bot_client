@@ -73,6 +73,7 @@ class ChatCompletionAPI(BaseAPI):
         Returns:
             The JSON response from the API or None in case of an error.
         """
+        print("post_chat_completions called with message:", message, "is_init:", is_init, "stream:", stream, "role:", role)
         endpoint = "chat/completions"
 
         if is_init:

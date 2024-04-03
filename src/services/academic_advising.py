@@ -8,6 +8,8 @@ sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from models.conversation import Conversation, Message
 from api.chat_api import ChatCompletionAPI  
+from api.chat_api import Role
+
 
 class AdvisorService:
     def __init__(self, chat_api: ChatCompletionAPI):
@@ -18,6 +20,14 @@ class AdvisorService:
             chat_api (ChatCompletionAPI): An instance of the ChatCompletionAPI for making chat completion requests.
         """
         self.chat_api = chat_api
+        
+    def general_query(self, query: str) -> str:
+        response = self.chat_api.post_chat_completions(query, role=Role.USER, is_init=False)# self.chat_api.post_completions([{"content": query}], stream=False)
+        if response and 'choices' in response and len(response['choices']) > 0:
+            return response['choices'][0]['message']['content']
+        else:
+            return "I'm sorry, I couldn't find an answer to your question."
+
 
     def handle_query(self, conversation: Conversation, query: str) -> str:
         """
