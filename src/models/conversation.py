@@ -1,6 +1,9 @@
 from typing import List, Dict, Optional
 from datetime import datetime, timezone
+import json
+from dataclasses import dataclass
 
+@dataclass(frozen=True)
 class Message:
     def __init__(self, content: str, sender: str, timestamp: Optional[datetime] = None):
         """

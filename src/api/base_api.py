@@ -9,7 +9,7 @@ class BaseAPI:
         headers (Dict[str, str]): Default headers to include in all requests.
     """
 
-    def __init__(self, base_url: str = "https://4158-161-28-242-155.ngrok-free.app/v1"):
+    def __init__(self, base_url: str = "http://localhost:8001/v1"):
         """Initialize the BaseAPI with a base URL and default headers.
 
         Args:

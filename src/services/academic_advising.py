@@ -1,6 +1,13 @@
 from typing import Optional
-from src.models.conversation import Conversation, Message
-from src.api.chat_api import ChatCompletionAPI  # Assume this is your API client class
+
+import os
+import sys
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from models.conversation import Conversation, Message
+from api.chat_api import ChatCompletionAPI  
 
 class AdvisorService:
     def __init__(self, chat_api: ChatCompletionAPI):
@@ -83,7 +90,7 @@ class AdvisorService:
 
 # Example usage
 if __name__ == "__main__":
-    chat_api = ChatCompletionAPI(base_url="your_chat_api_base_url_here")
+    chat_api = ChatCompletionAPI(base_url='http://localhost:8001/v1')
     advisor_service = AdvisorService(chat_api)
     conversation = Conversation()
     response = advisor_service.handle_query(conversation, "What are the prerequisites for CS 2450?")

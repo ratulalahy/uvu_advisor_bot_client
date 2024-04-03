@@ -1,7 +1,14 @@
 from enum import Enum, auto
 from typing import List, Dict, Optional, Any
-from base_api import BaseAPI
-from config import Config
+
+import os
+import sys
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from api.base_api import BaseAPI
+
 
 class Role(Enum):
     USER = auto()
@@ -17,7 +24,7 @@ class ChatCompletionAPI(BaseAPI):
     utilizing an enum for role management.
     """
 
-    def __init__(self, base_url: str = "https://4158-161-28-242-155.ngrok-free.app/v1"):
+    def __init__(self, base_url: str = "http://localhost:8001/v1"):
         super().__init__(base_url)
         self.conversation_history: List[Dict[str, Any]] = []
 
